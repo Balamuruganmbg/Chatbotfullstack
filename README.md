@@ -176,58 +176,7 @@ npm run build:backend
 npm run build:frontend
 ```
 
----
 
-## Integrating a Real AI Provider
-
-The backend currently returns simulated responses. To use a real LLM:
-
-### OpenAI (GPT-4)
-```bash
-cd backend && npm install openai
-```
-
-In `src/services/chat.service.ts`, replace `generateAiResponse()`:
-
-```typescript
-import OpenAI from 'openai';
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-// In streamMessage():
-const stream = openai.beta.chat.completions.stream({
-  model: 'gpt-4o',
-  messages: [{ role: 'user', content }],
-});
-for await (const chunk of stream) {
-  const token = chunk.choices[0]?.delta?.content || '';
-  if (token) {
-    accumulated += token;
-    res.write(`data: ${JSON.stringify({ type: 'token', content: accumulated })}\n\n`);
-  }
-}
-```
-
-### Anthropic Claude
-```bash
-cd backend && npm install @anthropic-ai/sdk
-```
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
-const stream = anthropic.messages.stream({
-  model: 'claude-opus-4-6',
-  max_tokens: 2048,
-  messages: [{ role: 'user', content }],
-});
-for await (const event of stream) {
-  if (event.type === 'content_block_delta') {
-    accumulated += event.delta.text;
-    res.write(`data: ${JSON.stringify({ type: 'token', content: accumulated })}\n\n`);
-  }
-}
-```
 
 ---
 
