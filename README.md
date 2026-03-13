@@ -75,6 +75,53 @@ frontend/src/
 
 ---
 
+## Screenshots
+
+### Sign Up
+![Sign Up](screenshots/signup.png)
+
+### Login
+![Login](screenshots/login.png)
+
+### Home
+![Home](screenshots/home.png)
+
+### PDF Parsing
+![File Upload](screenshots/file%20upload.png)
+
+![Document Upload](screenshots/doc%20upload.png)
+
+![PDF Parsing](screenshots/pdf%20parsing.png)
+
+### Feedback
+![Like](screenshots/like.png)
+
+![Dislike](screenshots/dislike.png)
+
+### Delete Chat
+![Delete](screenshots/delete.png)
+
+---
+
+## Database Structure
+
+### Users Collection
+![DB Users](screenshots/db%20users.png)
+
+### Chats Collection
+![DB Chat](screenshots/db%20chat.png)
+
+### Messages Collection
+![DB Message](screenshots/db%20message.png)
+
+### Documents Collection
+![DB Documents](screenshots/db%20documents.png)
+
+### Feedback Collection
+![DB Feedback](screenshots/db%20feedback.png)
+
+---
+
 ## Database Schema
 
 ```

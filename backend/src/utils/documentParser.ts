@@ -202,13 +202,11 @@ export const generateDocumentAnswer = (
 
   const excerpts = relevant.map((s) => `• ${s}`).join('\n');
 
-  return (
-    `Based on your uploaded document${docNames.length > 1 ? 's' : ''} (${docList}), ` +
-    `here is what I found relevant to your question:\n\n` +
-    `${excerpts}\n\n` +
-    `---\n*This answer was generated from your document content. ` +
-    `For more precise analysis, consider integrating an AI provider (OpenAI / Anthropic) via the \`OPENAI_API_KEY\` environment variable.*`
-  );
+return (
+  `Based on your uploaded document${docNames.length > 1 ? 's' : ''} (${docList}), ` +
+  `here is what I found relevant to your question:\n\n` +
+  `${excerpts}`
+);
 };
 
 // Common English stop words to skip during keyword matching
