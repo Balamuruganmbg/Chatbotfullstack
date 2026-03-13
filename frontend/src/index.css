@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 9%;
+    --foreground: 220 10% 95%;
+    --card: 220 13% 12%;
+    --card-foreground: 220 10% 95%;
+    --popover: 220 13% 12%;
+    --popover-foreground: 220 10% 95%;
+    --primary: 263 70% 65%;
+    --primary-foreground: 220 10% 98%;
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 220 10% 85%;
+    --muted: 220 13% 16%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 220 13% 20%;
+    --accent-foreground: 220 10% 90%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 18%;
+    --input: 220 13% 16%;
+    --ring: 263 70% 65%;
+    --radius: 0.75rem;
+    --sidebar-background: 220 15% 7%;
+    --sidebar-foreground: 220 10% 80%;
+    --sidebar-border: 220 13% 15%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-white/5 rounded-xl shadow-xl;
+  }
+
+  /* Message bubble */
+  .message-user {
+    @apply bg-primary/20 border border-primary/30 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%] ml-auto;
+  }
+
+  .message-assistant {
+    @apply bg-card border border-border/50 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%];
+  }
+
+  /* Typing indicator dots */
+  .typing-dot {
+    @apply w-2 h-2 rounded-full bg-muted-foreground;
+    animation: pulse-dot 1.4s ease-in-out infinite;
+  }
+
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-muted rounded-lg;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--accent)) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  /* Input focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+  }
+}
+
+/* Markdown content styles */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  @apply font-semibold mt-4 mb-2;
+}
+
+.markdown-content h1 { @apply text-xl; }
+.markdown-content h2 { @apply text-lg; }
+.markdown-content h3 { @apply text-base; }
+
+.markdown-content p {
+  @apply mb-3 leading-relaxed;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply pl-5 mb-3 space-y-1;
+}
+
+.markdown-content ul { @apply list-disc; }
+.markdown-content ol { @apply list-decimal; }
+
+.markdown-content code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-primary;
+}
+
+.markdown-content pre {
+  @apply bg-muted/80 border border-border/50 rounded-lg p-4 overflow-x-auto my-3;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent p-0 text-foreground;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-primary/50 pl-4 italic text-muted-foreground my-3;
+}
+
+.markdown-content a {
+  @apply text-primary hover:underline;
+}
+
+.markdown-content table {
+  @apply w-full border-collapse my-3;
+}
+
+.markdown-content th,
+.markdown-content td {
+  @apply border border-border px-3 py-2 text-sm;
+}
+
+.markdown-content th {
+  @apply bg-muted font-semibold;
+}
