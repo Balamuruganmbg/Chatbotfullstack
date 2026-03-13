@@ -86,10 +86,13 @@ frontend/src/
 ### Home
 ![Home](screenshots/home.png)
 
-### PDF Parsing
-![File Upload](screenshots/file%20upload.png)
-
+### File Upload
 ![Document Upload](screenshots/doc%20upload.png)
+
+
+
+### File Parsing
+![File Upload](screenshots/file%20upload.png)
 
 ![PDF Parsing](screenshots/pdf%20parsing.png)
 
